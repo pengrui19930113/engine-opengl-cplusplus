@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {  
+            "label": "g++",
+            "command": "g++",  
+            "args": ["-g","${file}","-o","${fileBasenameNoExtension}.exe"
+       
+                
+                
+                ],    // 编译命令参数  
+            "problemMatcher": {  
+                "owner": "cpp",  
+                "fileLocation": ["relative", "${workspaceRoot}"],  
+                "pattern": {  
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",  
+                    "file": 1,  
+                    "line": 2,  
+                    "column": 3,  
+                    "severity": 4,  
+                    "message": 5  
+                }  
+            }  
+        },
+        {  
+            "label": "glutg++",
+            "command": "g++",  
+            "args": ["-g","${file}"
+                
+                ,"-o","${fileBasenameNoExtension}.exe"
+                ,"-D","FREEGLUT_STATIC"
+                ,"-I","C:\\MinGW\\include" 
+                ,"-L","C:\\MinGW\\lib"
+                ,"-l","freeglut_static"
+                ,"-l","opengl32"
+                ,"-l","winmm"
+                ,"-l","gdi32"
+                ,"-l","pthreadGC2"
+                ,"-Wl,--subsystem,windows"
+                
+                
+                ],    // 编译命令参数  
+            "problemMatcher": {  
+                "owner": "cpp",  
+                "fileLocation": ["relative", "${workspaceRoot}"],  
+                "pattern": {  
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",  
+                    "file": 1,  
+                    "line": 2,  
+                    "column": 3,  
+                    "severity": 4,  
+                    "message": 5  
+                }  
+            }  
+        },
+        {
+            "label": "build",
+            "command": "mingw32-make.exe",
+            "args": ["default"],
+            "type": "shell"
+        },
+        {
+            "label": "build-debug",
+            "command": "mingw32-make.exe",
+            "args": ["debug"],
+            "type": "shell"
+        },
+        {
+            "label": "clean",
+            "command": "mingw32-make.exe",
+            "args": ["clean"],
+            "type": "shell"
+        }
+    ]
+}
